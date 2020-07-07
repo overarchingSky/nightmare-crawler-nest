@@ -7,19 +7,20 @@ import { jwtConstants } from './constants';
 import { UserModule } from '../user/user.module';
 import { JwtStrategy } from './jwt.strategy';
 import { LocalStrategy } from './local.strategy';
+//import { UserService } from '../user/user.service';
 
 @Module({
   imports:[
     UserModule,
     // 默认使用jwt策略
-    PassportModule.register({ defaultStrategy: 'jwt' }),,
+    PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
       secret: jwtConstants.secret,
       //60s登录过期时间
-      signOptions: { expiresIn: '60s' },
+      signOptions: { expiresIn: '6000s' },
     })
   ],
-  providers: [AuthService, LocalStrategy, JwtStrategy],
+  providers: [AuthService, UserModule,LocalStrategy, JwtStrategy],
   controllers:[AuthController],
   exports: [AuthService]
 })
