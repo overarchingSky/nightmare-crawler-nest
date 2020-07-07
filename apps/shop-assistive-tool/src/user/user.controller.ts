@@ -7,7 +7,6 @@ export class UserController {
 
     @Post('create')
     create(@Request() req){
-        console.log('create',req.body)
         return this.userService.create(req.body)
     }
 }

@@ -5,6 +5,7 @@ import { User } from './schemas/user.schemas';
 
 interface UserDto {
     id:string
+    account:string,
     name:string,
     password:string
 }
@@ -17,7 +18,6 @@ export class UserService {
     }
 
     async create(createCatDto: UserDto): Promise<User> {
-        console.log('CreateCatDto',createCatDto)
         const createdUser = new this.userModels(createCatDto);
         return createdUser.save();
     }
@@ -26,8 +26,8 @@ export class UserService {
         return this.userModels.find().exec();
     }
 
-    async find(username: string): Promise<User | undefined> {
+    async find(account: string): Promise<User | undefined> {
         const all = await this.findAll()
-        return all.find(user => user.name === username);
+        return all.find(user => user.account === account);
     }
 }
