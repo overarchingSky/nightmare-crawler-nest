@@ -1,9 +1,9 @@
 {
   "collection": "@nestjs/schematics",
-  "sourceRoot": "apps/shop-assistive-tool/src",
+  "sourceRoot": "apps/love/src",
   "monorepo": true,
-  "root": "apps/nightmare-crawler-nest",
-  "projects": {
-
+  "root": "apps/love",
+  "compilerOptions": {
+    "webpack": true
   }
 }

@@ -4,14 +4,14 @@ import { AuthController } from './auth.controller';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
-import { UserModule } from '../user/user.module';
+import { AccountModule } from '../account/account.module';
 import { JwtStrategy } from './jwt.strategy';
 import { LocalStrategy } from './local.strategy';
-//import { UserService } from '../user/user.service';
+//import { AccountService } from '../Account/Account.service';
 
 @Module({
   imports:[
-    UserModule,
+    AccountModule,
     // 默认使用jwt策略
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
@@ -20,7 +20,7 @@ import { LocalStrategy } from './local.strategy';
       signOptions: { expiresIn: '6000s' },
     })
   ],
-  providers: [AuthService, UserModule,LocalStrategy, JwtStrategy],
+  providers: [AuthService, AccountModule,LocalStrategy, JwtStrategy],
   controllers:[AuthController],
   exports: [AuthService]
 })
