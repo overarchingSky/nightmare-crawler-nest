@@ -1,9 +1,4 @@
 {
   "collection": "@nestjs/schematics",
-  "sourceRoot": "apps/love/src",
-  "monorepo": true,
-  "root": "apps/love",
-  "compilerOptions": {
-    "webpack": true
-  }
+  "sourceRoot": "src"
 }
