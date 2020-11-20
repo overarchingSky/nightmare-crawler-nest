@@ -10,7 +10,7 @@ export class PersonalInfomationController {
      * @param ids 
      */
     @Get()
-    find(@Query() ids:string[]): Promise<PersonalInfomation[] | undefined>{
+    find(@Query('ids') ids:string[]): Promise<PersonalInfomation[] | undefined>{
         return this.personalInfomationService.find(ids)
     }
     /**
@@ -21,7 +21,7 @@ export class PersonalInfomationController {
     findById(@Param() id:string): Promise<PersonalInfomation | undefined>{
         return this.personalInfomationService.findById(id)
     }
-    @Post()
+    @Post('create')
     create(@Body() personalInfomationDto:PersonalInfomation){
         return this.personalInfomationService.create(personalInfomationDto)
     }

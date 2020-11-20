@@ -1,7 +1,6 @@
 import { Document } from 'mongoose';
 export declare class PersonalInfomation extends Document {
-    id: string;
-    userId: string;
+    accountId?: string;
     name: string;
     age: string;
     gender: 'MALE' | 'FEMAL';

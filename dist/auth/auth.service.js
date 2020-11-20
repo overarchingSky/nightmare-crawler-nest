@@ -18,9 +18,9 @@ let AuthService = class AuthService {
         this.accountService = accountService;
         this.jwtService = jwtService;
     }
-    async validateAccount(acceptAccount, acceptPass) {
-        const account = await this.accountService.find(acceptAccount);
-        if (account && account.password === acceptPass) {
+    async validateAccount(accountId, password) {
+        const account = await this.accountService.findOne(accountId);
+        if (account && account.password === password) {
             return account;
         }
         return null;

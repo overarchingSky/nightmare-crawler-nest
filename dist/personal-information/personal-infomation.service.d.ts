@@ -7,6 +7,6 @@ export declare class PersonalInfomationService {
     delete(ids: string[]): Promise<any>;
     deleteById(id: string): Promise<PersonalInfomation | undefined>;
     findById(id: string): Promise<PersonalInfomation | undefined>;
-    findOne(userId: string): Promise<PersonalInfomation>;
-    find(ids: string[]): Promise<PersonalInfomation[] | undefined>;
+    findOne(accountId: string): Promise<PersonalInfomation>;
+    find(ids?: string[]): Promise<PersonalInfomation[] | undefined>;
 }

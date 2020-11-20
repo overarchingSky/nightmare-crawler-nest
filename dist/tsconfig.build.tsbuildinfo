@@ -1701,14 +1701,24 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f",
         "affectsGlobalScope": false
       },
+      "../src/personal-information/schemas/personal-infomation.schemas.ts": {
+        "version": "ed85c551dcd1c58cdd3fd8ed6317d9088c1c5648bbab04a330aec22493d596aa",
+        "signature": "fc24169bf60a1648f0f843d242bc013d77896bcd06aef2171647ca6146ef4335",
+        "affectsGlobalScope": false
+      },
       "../src/account/schemas/account.schemas.ts": {
-        "version": "d1d699e74fc472bea6d7ebc57ed6db8f0119539caf451e970894cd18db6deeb8",
-        "signature": "3be576524fe0dcb317cc14a9d0177042d79a00baaf07c42ac14eaed31566a880",
+        "version": "3861a23209152883de3b7f047bb07ab3dfd753a908e2aa68a4c5e519753c1e9b",
+        "signature": "4e1a6c34a1818fcee62a74df1a00463657192e9bd5de4fdad1b27a46165a8008",
+        "affectsGlobalScope": false
+      },
+      "../src/account/dto/account.dto.ts": {
+        "version": "36fde8c42194259f7b9aa1f6ba6ba7ace421701e897db6a3915a2f1b5cdfb0d6",
+        "signature": "f3787d0000b48855fe4a074ef9d6777007da518ef8e8073779f70a05cc2006a9",
         "affectsGlobalScope": false
       },
       "../src/account/account.service.ts": {
-        "version": "c65128ab1b23c6e7a879b33fa2a6ff40216feff9c3a6633a4ac33ce7c931834a",
-        "signature": "2a500086fcd696cdd5bfec53cd4ec45e0e8326a7264d6f1a3bfa2fac0c9c40bc",
+        "version": "47ab387b7ee37319f74aeaae2dc1decd09accf148977ea7a7bb792dd595d729c",
+        "signature": "afdf7eab672559a639d0dab18be4fe361b0715fa20eb634a23868427451f9c07",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/jsonwebtoken/index.d.ts": {
@@ -1747,8 +1757,8 @@
         "affectsGlobalScope": false
       },
       "../src/auth/auth.service.ts": {
-        "version": "e3aa1cf86d0a2d0ef34d3796d856d0e2cd509b8618de2aa3283d988347f2f0fa",
-        "signature": "e5412872de76414e9fa1527b0981f45805edb9485e0db2c46881ed37224df304",
+        "version": "b71bbd94a71f5b4aa1595f912e6bf3508e4dfdf900e564850dce33bb81c8d817",
+        "signature": "618458314425cd368c5fcbeb91360da07ac566d26d03978c78312cb7c13d3fb4",
         "affectsGlobalScope": false
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
@@ -1856,9 +1866,14 @@
         "signature": "baf608b3f1bf90782d8b003287213bceae5e9b31f56c2ce676e223ea85ea10b2",
         "affectsGlobalScope": false
       },
+      "../src/personal-information/personal-infomation.service.ts": {
+        "version": "f9803b9ce0485f8e2383f91fb3f71acfbd34f36e846b0ddd4fa50cce23e58d8b",
+        "signature": "7d2365214808fb923fac5a11dadda5f4500882aeb1deb7cedb69d8e15c56b605",
+        "affectsGlobalScope": false
+      },
       "../src/auth/auth.controller.ts": {
-        "version": "133f02bd96896e751490d0a8cf8e64802553666f367f4db50ae4691e5da5eeee",
-        "signature": "a48eb4ed34e56cea5e49f2858ce0949d3de614ec3df3cd40d7a1e45235d8cf05",
+        "version": "ba5f2febd27482fe102e38d4c650ba9ab9a36bb155a450312699c94ce6689e50",
+        "signature": "777c0c519f0d315f0f97e75464c498d4539b053d34dd6eff185eb51c8cd3765b",
         "affectsGlobalScope": false
       },
       "../src/auth/constants.ts": {
@@ -1866,13 +1881,23 @@
         "signature": "541603c0913bf3791cdca6f10c3bcd0042e5858974e191e345bfecb3523124fb",
         "affectsGlobalScope": false
       },
+      "../src/personal-information/personal-infomation.controller.ts": {
+        "version": "9966997c6f80531c427723f0ba166615819d0027368b9716971f901c76535e2a",
+        "signature": "14594ebed73a3cb1a67df6d7d7cd282d93d401323926c7881480848fc54965a0",
+        "affectsGlobalScope": false
+      },
+      "../src/personal-information/personal-infomation.module.ts": {
+        "version": "d17b97f44f67bdc802018899efef59b2bf335a56f6bb60cfabe6490bf2bde9eb",
+        "signature": "b5a543e51ac9a25c87f3e9c406ef35b48510a2870871506b4d3960f692f13489",
+        "affectsGlobalScope": false
+      },
       "../src/account/account.controller.ts": {
-        "version": "593f8aa2a5e1138af718a0bfd70cf1e138a700001a26657b75fb8f14f5b41987",
-        "signature": "18e04065d3b15feed0a501b355a437786ff27d436061080aaed51ad42ce9ace4",
+        "version": "480c8abc96b15f56ba5bbcc687e4595dc151a247bf923324800fde978516f495",
+        "signature": "893ef9c270e845abb310a567d079c8f4aaeb59c42317af3202f757a9a89035a9",
         "affectsGlobalScope": false
       },
       "../src/account/account.module.ts": {
-        "version": "264d80cb3a2bbe5577e71f20bb447b5a0f448533450414ea413bc450277f9aab",
+        "version": "36277113bf63d357131a9296c2806fc1a5321c9d301af42bf25bc8bf3d6f4693",
         "signature": "5dca972e1047709adf5566a809d8f6db3e7eb1b2e4836cddae9f8237b7773903",
         "affectsGlobalScope": false
       },
@@ -1891,44 +1916,24 @@
         "signature": "daa7408652d5118ff77232ceafc515edeaff3cc9edfaf6c853e0570cd8469cb8",
         "affectsGlobalScope": false
       },
-      "../src/personal-information/schemas/personal-infomation.schemas.ts": {
-        "version": "6fcfa844d98fcffbb0bc0e9339ae477525f0de627d09c43a22cc625f5e84ccb1",
-        "signature": "e25553cc4e629f8bf4648c6cdf46a7eded93c766f5d058419b3c6a9ac1b4c40e",
-        "affectsGlobalScope": false
-      },
-      "../src/personal-information/personal-infomation.service.ts": {
-        "version": "31e91162509ac85e4fe3d27c77a95f193a7e3dcbc8d2ac96ca8c74f39c800334",
-        "signature": "2922456d5222e5e3dea7ec6bc4021e87f3292bd611c21b058c596bf9d56ee8c2",
-        "affectsGlobalScope": false
-      },
       "../src/auth/local.strategy.ts": {
         "version": "6ebdf396496f132b701d396a93cb6fc28c454d3b07ae66c671c780891f6f7b29",
         "signature": "4b468c2b68f35df05f2d06de3b67e2b7642e679114f048183f5a0c28c36a49ad",
         "affectsGlobalScope": false
       },
       "../src/auth/auth.module.ts": {
-        "version": "2ed8497debff0f25343cf7fff21aa8265c89adc8681defb488da9813aadaa880",
+        "version": "92a4615f5c7a33880bd1c263390aad252e85f32e3c45caaa11662922da0b2aae",
         "signature": "2e5d258cf85349b02b015c3f1b8873c152d182c3819a7ccc3aff16fc3037a5fc",
         "affectsGlobalScope": false
       },
       "../src/app/app.module.ts": {
-        "version": "715dc317cfc31d29995c170a49e6b95d87ddeb7b4949936ecf4a028c6799869d",
+        "version": "be9a51a005514a99e263595be91a7fdfcdc6203db5a2d59f5ca29328d951bc14",
         "signature": "9fc7f7b6ad854404973b8cba8e6d883f758237991968e9a3965d716d46f1da88",
         "affectsGlobalScope": false
       },
       "../src/main.ts": {
         "version": "69489ecffc8bf5b7ce78b4ce2c2f982f8740c85345f3c19d4f91b8f424977808",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
-        "affectsGlobalScope": false
-      },
-      "../src/personal-information/personal-infomation.controller.ts": {
-        "version": "e6efcd4dd4b0da995bafe020972af7f0f06a7baf6484811faee93396fa7b4215",
-        "signature": "14594ebed73a3cb1a67df6d7d7cd282d93d401323926c7881480848fc54965a0",
-        "affectsGlobalScope": false
-      },
-      "../src/personal-information/personal-infomation.module.ts": {
-        "version": "79b63efd0c96a56fdb3e0432decab6337f6ec213924cdef5c11a5b8aa0ce40c7",
-        "signature": "b5a543e51ac9a25c87f3e9c406ef35b48510a2870871506b4d3960f692f13489",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/anymatch/index.d.ts": {
@@ -3634,20 +3639,31 @@
       ],
       "../src/account/account.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../src/account/account.service.ts"
+        "../src/account/account.service.ts",
+        "../src/account/dto/account.dto.ts",
+        "../src/auth/jwt-auth.guard.ts",
+        "../src/personal-information/personal-infomation.service.ts",
+        "../src/personal-information/schemas/personal-infomation.schemas.ts"
       ],
       "../src/account/account.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../src/account/account.controller.ts",
         "../src/account/account.service.ts",
-        "../src/account/schemas/account.schemas.ts"
+        "../src/account/schemas/account.schemas.ts",
+        "../src/personal-information/personal-infomation.module.ts"
       ],
       "../src/account/account.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/mongoose/index.d.ts",
         "../node_modules/@types/mongoose/index.d.ts",
-        "../src/account/schemas/account.schemas.ts"
+        "../src/account/dto/account.dto.ts",
+        "../src/account/schemas/account.schemas.ts",
+        "../src/personal-information/schemas/personal-infomation.schemas.ts"
+      ],
+      "../src/account/dto/account.dto.ts": [
+        "../src/account/schemas/account.schemas.ts",
+        "../src/personal-information/schemas/personal-infomation.schemas.ts"
       ],
       "../src/account/schemas/account.schemas.ts": [
         "../node_modules/@nestjs/mongoose/index.d.ts",
@@ -3663,7 +3679,8 @@
         "../src/account/account.module.ts",
         "../src/app/app.controller.ts",
         "../src/app/app.service.ts",
-        "../src/auth/auth.module.ts"
+        "../src/auth/auth.module.ts",
+        "../src/personal-information/personal-infomation.module.ts"
       ],
       "../src/app/app.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts"
@@ -3672,7 +3689,8 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/auth/auth.service.ts",
         "../src/auth/jwt-auth.guard.ts",
-        "../src/auth/local-auth.guard.ts"
+        "../src/auth/local-auth.guard.ts",
+        "../src/personal-information/personal-infomation.service.ts"
       ],
       "../src/auth/auth.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -3683,7 +3701,8 @@
         "../src/auth/auth.service.ts",
         "../src/auth/constants.ts",
         "../src/auth/jwt.strategy.ts",
-        "../src/auth/local.strategy.ts"
+        "../src/auth/local.strategy.ts",
+        "../src/personal-information/personal-infomation.module.ts"
       ],
       "../src/auth/auth.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -3721,8 +3740,10 @@
       ],
       "../src/personal-information/personal-infomation.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/mongoose/index.d.ts",
         "../src/personal-information/personal-infomation.controller.ts",
-        "../src/personal-information/personal-infomation.service.ts"
+        "../src/personal-information/personal-infomation.service.ts",
+        "../src/personal-information/schemas/personal-infomation.schemas.ts"
       ],
       "../src/personal-information/personal-infomation.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -5153,11 +5174,19 @@
       ],
       "../src/account/account.controller.ts": [
         "../src/account/account.service.ts",
-        "../src/account/schemas/account.schemas.ts"
+        "../src/account/dto/account.dto.ts",
+        "../src/account/schemas/account.schemas.ts",
+        "../src/personal-information/personal-infomation.service.ts",
+        "../src/personal-information/schemas/personal-infomation.schemas.ts"
       ],
       "../src/account/account.service.ts": [
         "../node_modules/@types/mongoose/index.d.ts",
+        "../src/account/dto/account.dto.ts",
         "../src/account/schemas/account.schemas.ts"
+      ],
+      "../src/account/dto/account.dto.ts": [
+        "../src/account/schemas/account.schemas.ts",
+        "../src/personal-information/schemas/personal-infomation.schemas.ts"
       ],
       "../src/account/schemas/account.schemas.ts": [
         "../node_modules/@types/mongoose/index.d.ts"
@@ -5166,7 +5195,8 @@
         "../src/app/app.service.ts"
       ],
       "../src/auth/auth.controller.ts": [
-        "../src/auth/auth.service.ts"
+        "../src/auth/auth.service.ts",
+        "../src/personal-information/personal-infomation.service.ts"
       ],
       "../src/auth/auth.service.ts": [
         "../node_modules/@nestjs/jwt/index.d.ts",
@@ -5620,6 +5650,7 @@
       "../src/account/account.controller.ts",
       "../src/account/account.module.ts",
       "../src/account/account.service.ts",
+      "../src/account/dto/account.dto.ts",
       "../src/account/schemas/account.schemas.ts",
       "../src/app/app.controller.ts",
       "../src/app/app.module.ts",

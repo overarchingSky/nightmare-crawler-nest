@@ -17,14 +17,20 @@ const common_1 = require("@nestjs/common");
 const auth_service_1 = require("./auth.service");
 const local_auth_guard_1 = require("./local-auth.guard");
 const jwt_auth_guard_1 = require("./jwt-auth.guard");
+const personal_infomation_service_1 = require("../personal-information/personal-infomation.service");
 let AuthController = class AuthController {
-    constructor(authService) {
+    constructor(authService, personalInfomationService) {
         this.authService = authService;
+        this.personalInfomationService = personalInfomationService;
     }
     login(req) {
         return this.authService.login(req.user);
     }
-    getProfile(req) {
+    async getProfile(req) {
+        console.log('login', req.user.id);
+        const userInfo = await this.personalInfomationService.findOne(req.user.id);
+        console.log('userInfo', userInfo);
+        return userInfo;
         return req.user;
     }
 };
@@ -42,11 +48,11 @@ __decorate([
     __param(0, common_1.Request()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], AuthController.prototype, "getProfile", null);
 AuthController = __decorate([
     common_1.Controller('auth'),
-    __metadata("design:paramtypes", [auth_service_1.AuthService])
+    __metadata("design:paramtypes", [auth_service_1.AuthService, personal_infomation_service_1.PersonalInfomationService])
 ], AuthController);
 exports.AuthController = AuthController;
 //# sourceMappingURL=auth.controller.js.map

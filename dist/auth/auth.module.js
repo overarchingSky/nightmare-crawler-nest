@@ -16,12 +16,14 @@ const constants_1 = require("./constants");
 const account_module_1 = require("../account/account.module");
 const jwt_strategy_1 = require("./jwt.strategy");
 const local_strategy_1 = require("./local.strategy");
+const personal_infomation_module_1 = require("../personal-information/personal-infomation.module");
 let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
     common_1.Module({
         imports: [
             account_module_1.AccountModule,
+            personal_infomation_module_1.PersonalInfomationModule,
             passport_1.PassportModule.register({ defaultStrategy: 'jwt' }),
             jwt_1.JwtModule.register({
                 secret: constants_1.jwtConstants.secret,

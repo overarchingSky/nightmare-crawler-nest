@@ -13,11 +13,12 @@ const app_service_1 = require("./app.service");
 const auth_module_1 = require("../auth/auth.module");
 const mongoose_1 = require("@nestjs/mongoose");
 const account_module_1 = require("../account/account.module");
+const personal_infomation_module_1 = require("../personal-information/personal-infomation.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
-        imports: [mongoose_1.MongooseModule.forRoot('mongodb://localhost/nest'), auth_module_1.AuthModule, account_module_1.AccountModule],
+        imports: [mongoose_1.MongooseModule.forRoot('mongodb://localhost/nest'), auth_module_1.AuthModule, account_module_1.AccountModule, personal_infomation_module_1.PersonalInfomationModule],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })

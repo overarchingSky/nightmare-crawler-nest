@@ -33,14 +33,18 @@ export class PersonalInfomationService {
     async findById(id:string):Promise<PersonalInfomation | undefined>{
         return this.PersonalInfomationModel.findById(id)
     }
-    async findOne(userId:string){
-        return (await this.PersonalInfomationModel.findOne({userId})).execPopulate()
+    async findOne(accountId:string){
+        return this.PersonalInfomationModel.findOne({accountId}).exec()
     }
     /**
      * 批量查找
-     * @param ids 
+     * @param ids 指定查找的id集合，不传则查全部
      */
-    async find(ids:string[]):Promise<PersonalInfomation[] | undefined>{
-        return this.PersonalInfomationModel.find({_id:{$in:ids}}).exec()
+    async find(ids?:string[]):Promise<PersonalInfomation[] | undefined>{
+        if(ids){
+            return this.PersonalInfomationModel.find({accountId:{$in:ids}})
+        }else{
+            return this.PersonalInfomationModel.find()
+        }
     }
 }

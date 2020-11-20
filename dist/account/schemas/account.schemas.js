@@ -15,10 +15,6 @@ const mongoose_2 = require("mongoose");
 let Account = class Account extends mongoose_2.Document {
 };
 __decorate([
-    mongoose_1.Prop(),
-    __metadata("design:type", String)
-], Account.prototype, "id", void 0);
-__decorate([
     mongoose_1.Prop({ required: true }),
     __metadata("design:type", String)
 ], Account.prototype, "account", void 0);
@@ -26,10 +22,6 @@ __decorate([
     mongoose_1.Prop({ required: true }),
     __metadata("design:type", String)
 ], Account.prototype, "password", void 0);
-__decorate([
-    mongoose_1.Prop(),
-    __metadata("design:type", String)
-], Account.prototype, "name", void 0);
 Account = __decorate([
     mongoose_1.Schema()
 ], Account);

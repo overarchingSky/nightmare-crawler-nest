@@ -34,11 +34,16 @@ let PersonalInfomationService = class PersonalInfomationService {
     async findById(id) {
         return this.PersonalInfomationModel.findById(id);
     }
-    async findOne(userId) {
-        return (await this.PersonalInfomationModel.findOne({ userId })).execPopulate();
+    async findOne(accountId) {
+        return this.PersonalInfomationModel.findOne({ accountId }).exec();
     }
     async find(ids) {
-        return this.PersonalInfomationModel.find({ _id: { $in: ids } }).exec();
+        if (ids) {
+            return this.PersonalInfomationModel.find({ accountId: { $in: ids } });
+        }
+        else {
+            return this.PersonalInfomationModel.find();
+        }
     }
 };
 PersonalInfomationService = __decorate([

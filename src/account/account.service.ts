@@ -1,14 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { PersonalInfomation, PersonalInfomationSchema } from 'src/personal-information/schemas/personal-infomation.schemas';
+import { IAccountDto } from './dto/account.dto';
 import { Account } from './schemas/account.schemas';
-
-interface AccountDto {
-    id:string
-    account:string,
-    name:string,
-    password:string
-}
 
 @Injectable()
 export class AccountService {
@@ -16,19 +11,27 @@ export class AccountService {
     constructor(@InjectModel(Account.name) private AccountModel: Model<Account>){
         // 密码应该使用bcrypt库去进行加密
     }
-
-    async create(createCatDto: AccountDto): Promise<Account> {
+ 
+    async create(createCatDto: IAccountDto): Promise<Account> {
         const createdAccount = new this.AccountModel(createCatDto);
         return createdAccount.save();
     }
-    
-    async findAll(): Promise<Account[]> {
-        return this.AccountModel.find().exec();
+
+    async findOne(account: string): Promise<Account | undefined>{
+        return this.AccountModel.findOne({account})
     }
 
-    async find(account: string): Promise<Account | undefined> {
-        const all = await this.findAll()
-        return all.find(Account => Account.account === account);
+    async find(ids?: string[]): Promise<Account[] | undefined> {
+        if(ids){
+            return this.AccountModel.find({_id:{$in:ids}})
+        }else{
+            return this.AccountModel.find()
+            // .populate({path:'_id',model:PersonalInfomation.name,match:account => {
+            //     console.log('account._id',account._id)
+            //     //PersonalInfomation.findOne({accountId:account._id})
+            //     return {accountId:account._id}
+            // }})
+        }
     }
 
 }

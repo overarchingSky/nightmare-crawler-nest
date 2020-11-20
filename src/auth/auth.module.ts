@@ -7,11 +7,13 @@ import { jwtConstants } from './constants';
 import { AccountModule } from '../account/account.module';
 import { JwtStrategy } from './jwt.strategy';
 import { LocalStrategy } from './local.strategy';
+import { PersonalInfomationModule } from 'src/personal-information/personal-infomation.module';
 //import { AccountService } from '../Account/Account.service';
 
 @Module({
   imports:[
     AccountModule,
+    PersonalInfomationModule,
     // 默认使用jwt策略
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({

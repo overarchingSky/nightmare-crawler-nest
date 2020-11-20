@@ -16,6 +16,7 @@ exports.AccountService = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
+const personal_infomation_schemas_1 = require("../personal-information/schemas/personal-infomation.schemas");
 const account_schemas_1 = require("./schemas/account.schemas");
 let AccountService = class AccountService {
     constructor(AccountModel) {
@@ -25,12 +26,16 @@ let AccountService = class AccountService {
         const createdAccount = new this.AccountModel(createCatDto);
         return createdAccount.save();
     }
-    async findAll() {
-        return this.AccountModel.find().exec();
+    async findOne(account) {
+        return this.AccountModel.findOne({ account });
     }
-    async find(account) {
-        const all = await this.findAll();
-        return all.find(Account => Account.account === account);
+    async find(ids) {
+        if (ids) {
+            return this.AccountModel.find({ _id: { $in: ids } });
+        }
+        else {
+            return this.AccountModel.find();
+        }
     }
 };
 AccountService = __decorate([

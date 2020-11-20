@@ -9,6 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountModule = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
+const personal_infomation_module_1 = require("../personal-information/personal-infomation.module");
 const account_controller_1 = require("./account.controller");
 const account_service_1 = require("./account.service");
 const account_schemas_1 = require("./schemas/account.schemas");
@@ -16,7 +17,7 @@ let AccountModule = class AccountModule {
 };
 AccountModule = __decorate([
     common_1.Module({
-        imports: [mongoose_1.MongooseModule.forFeature([{ name: account_schemas_1.Account.name, schema: account_schemas_1.AccountSchema }])],
+        imports: [mongoose_1.MongooseModule.forFeature([{ name: account_schemas_1.Account.name, schema: account_schemas_1.AccountSchema }]), personal_infomation_module_1.PersonalInfomationModule],
         controllers: [account_controller_1.AccountController],
         providers: [account_service_1.AccountService],
         exports: [account_service_1.AccountService]

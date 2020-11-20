@@ -38,7 +38,7 @@ let PersonalInfomationController = class PersonalInfomationController {
 };
 __decorate([
     common_1.Get(),
-    __param(0, common_1.Query()),
+    __param(0, common_1.Query('ids')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Array]),
     __metadata("design:returntype", Promise)
@@ -51,7 +51,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], PersonalInfomationController.prototype, "findById", null);
 __decorate([
-    common_1.Post(),
+    common_1.Post('create'),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [personal_infomation_schemas_1.PersonalInfomation]),

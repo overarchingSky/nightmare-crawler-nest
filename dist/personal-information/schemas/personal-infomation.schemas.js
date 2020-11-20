@@ -17,11 +17,7 @@ let PersonalInfomation = class PersonalInfomation extends mongoose_2.Document {
 __decorate([
     mongoose_1.Prop(),
     __metadata("design:type", String)
-], PersonalInfomation.prototype, "id", void 0);
-__decorate([
-    mongoose_1.Prop(),
-    __metadata("design:type", String)
-], PersonalInfomation.prototype, "userId", void 0);
+], PersonalInfomation.prototype, "accountId", void 0);
 __decorate([
     mongoose_1.Prop({ required: true }),
     __metadata("design:type", String)
