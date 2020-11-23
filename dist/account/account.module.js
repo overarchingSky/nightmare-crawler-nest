@@ -17,10 +17,13 @@ let AccountModule = class AccountModule {
 };
 AccountModule = __decorate([
     common_1.Module({
-        imports: [mongoose_1.MongooseModule.forFeature([{ name: account_schemas_1.Account.name, schema: account_schemas_1.AccountSchema }]), personal_infomation_module_1.PersonalInfomationModule],
+        imports: [
+            mongoose_1.MongooseModule.forFeature([{ name: account_schemas_1.Account.name, schema: account_schemas_1.AccountSchema }]),
+            personal_infomation_module_1.PersonalInfomationModule,
+        ],
         controllers: [account_controller_1.AccountController],
         providers: [account_service_1.AccountService],
-        exports: [account_service_1.AccountService]
+        exports: [account_service_1.AccountService],
     })
 ], AccountModule);
 exports.AccountModule = AccountModule;

@@ -58,7 +58,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], PersonalInfomationController.prototype, "create", null);
 __decorate([
-    common_1.Delete(":id"),
+    common_1.Delete(':id'),
     __param(0, common_1.Param()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

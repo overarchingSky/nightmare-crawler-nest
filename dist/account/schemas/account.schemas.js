@@ -22,9 +22,14 @@ __decorate([
     mongoose_1.Prop({ required: true }),
     __metadata("design:type", String)
 ], Account.prototype, "password", void 0);
+__decorate([
+    mongoose_1.Prop({ default: [] }),
+    __metadata("design:type", Array)
+], Account.prototype, "user", void 0);
 Account = __decorate([
     mongoose_1.Schema()
 ], Account);
 exports.Account = Account;
+console.log('Account', Account);
 exports.AccountSchema = mongoose_1.SchemaFactory.createForClass(Account);
 //# sourceMappingURL=account.schemas.js.map

@@ -5,4 +5,4 @@ export declare class PersonalInfomation extends Document {
     age: string;
     gender: 'MALE' | 'FEMAL';
 }
-export declare const PersonalInfomationSchema: import("mongoose").Schema<any>;
+export declare const PersonalInfomationSchema: any;

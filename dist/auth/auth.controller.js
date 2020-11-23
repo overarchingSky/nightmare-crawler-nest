@@ -52,7 +52,8 @@ __decorate([
 ], AuthController.prototype, "getProfile", null);
 AuthController = __decorate([
     common_1.Controller('auth'),
-    __metadata("design:paramtypes", [auth_service_1.AuthService, personal_infomation_service_1.PersonalInfomationService])
+    __metadata("design:paramtypes", [auth_service_1.AuthService,
+        personal_infomation_service_1.PersonalInfomationService])
 ], AuthController);
 exports.AuthController = AuthController;
 //# sourceMappingURL=auth.controller.js.map

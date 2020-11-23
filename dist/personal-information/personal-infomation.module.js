@@ -16,10 +16,14 @@ let PersonalInfomationModule = class PersonalInfomationModule {
 };
 PersonalInfomationModule = __decorate([
     common_1.Module({
-        imports: [mongoose_1.MongooseModule.forFeature([{ name: personal_infomation_schemas_1.PersonalInfomation.name, schema: personal_infomation_schemas_1.PersonalInfomationSchema }])],
+        imports: [
+            mongoose_1.MongooseModule.forFeature([
+                { name: personal_infomation_schemas_1.PersonalInfomation.name, schema: personal_infomation_schemas_1.PersonalInfomationSchema },
+            ]),
+        ],
         controllers: [personal_infomation_controller_1.PersonalInfomationController],
         providers: [personal_infomation_service_1.PersonalInfomationService],
-        exports: [personal_infomation_service_1.PersonalInfomationService]
+        exports: [personal_infomation_service_1.PersonalInfomationService],
     })
 ], PersonalInfomationModule);
 exports.PersonalInfomationModule = PersonalInfomationModule;

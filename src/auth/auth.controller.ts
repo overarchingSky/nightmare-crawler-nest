@@ -6,21 +6,24 @@ import { PersonalInfomationService } from 'src/personal-information/personal-inf
 
 @Controller('auth')
 export class AuthController {
-    constructor(private readonly authService: AuthService, private readonly personalInfomationService: PersonalInfomationService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly personalInfomationService: PersonalInfomationService,
+  ) {}
 
-    @UseGuards(LocalAuthGuard)
-    @Post('login')
-    login(@Request() req){
-        return this.authService.login(req.user);
-    }
+  @UseGuards(LocalAuthGuard)
+  @Post('login')
+  login(@Request() req) {
+    return this.authService.login(req.user);
+  }
 
-    @UseGuards(JwtAuthGuard)
-    @Get('profile')
-    async getProfile(@Request() req) {
-        console.log('login',req.user.id)
-        const userInfo = await this.personalInfomationService.findOne(req.user.id)
-        console.log('userInfo',userInfo)
-        return userInfo
-        return req.user;
-    }
+  @UseGuards(JwtAuthGuard)
+  @Get('profile')
+  async getProfile(@Request() req) {
+    console.log('login', req.user.id);
+    const userInfo = await this.personalInfomationService.findOne(req.user.id);
+    console.log('userInfo', userInfo);
+    return userInfo;
+    return req.user;
+  }
 }

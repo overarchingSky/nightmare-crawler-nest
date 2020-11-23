@@ -7,9 +7,12 @@ import { Account, AccountSchema } from './schemas/account.schemas';
 //import { Model } from 'mongoose';
 
 @Module({
-  imports:[MongooseModule.forFeature([{ name: Account.name, schema: AccountSchema }]), PersonalInfomationModule],
+  imports: [
+    MongooseModule.forFeature([{ name: Account.name, schema: AccountSchema }]),
+    PersonalInfomationModule,
+  ],
   controllers: [AccountController],
   providers: [AccountService],
-  exports:[AccountService]
+  exports: [AccountService],
 })
 export class AccountModule {}

@@ -11,7 +11,7 @@ import { PersonalInfomationModule } from 'src/personal-information/personal-info
 //import { AccountService } from '../Account/Account.service';
 
 @Module({
-  imports:[
+  imports: [
     AccountModule,
     PersonalInfomationModule,
     // 默认使用jwt策略
@@ -20,10 +20,10 @@ import { PersonalInfomationModule } from 'src/personal-information/personal-info
       secret: jwtConstants.secret,
       //60s登录过期时间
       signOptions: { expiresIn: '6000s' },
-    })
+    }),
   ],
-  providers: [AuthService, AccountModule,LocalStrategy, JwtStrategy],
-  controllers:[AuthController],
-  exports: [AuthService]
+  providers: [AuthService, AccountModule, LocalStrategy, JwtStrategy],
+  controllers: [AuthController],
+  exports: [AuthService],
 })
 export class AuthModule {}

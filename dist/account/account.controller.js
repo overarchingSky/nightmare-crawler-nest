@@ -14,9 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountController = void 0;
 const common_1 = require("@nestjs/common");
-const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 const personal_infomation_service_1 = require("../personal-information/personal-infomation.service");
-const personal_infomation_schemas_1 = require("../personal-information/schemas/personal-infomation.schemas");
 const account_service_1 = require("./account.service");
 let AccountController = class AccountController {
     constructor(accountService, personalInfomationService) {
@@ -24,10 +22,11 @@ let AccountController = class AccountController {
         this.personalInfomationService = personalInfomationService;
     }
     async create(accountDto) {
-        const account = await this.accountService.create(accountDto);
-        accountDto.accountId = account.id;
-        console.log('create accountDto', accountDto);
-        return this.personalInfomationService.create(accountDto);
+        const personalInfomation = await this.personalInfomationService.create(accountDto);
+        console.log('personalInfomation', personalInfomation);
+        accountDto.user = [personalInfomation._id];
+        await this.accountService.create(accountDto);
+        return personalInfomation;
     }
     find(ids) {
         return this.accountService.find(ids);
@@ -49,7 +48,8 @@ __decorate([
 ], AccountController.prototype, "find", null);
 AccountController = __decorate([
     common_1.Controller('account'),
-    __metadata("design:paramtypes", [account_service_1.AccountService, personal_infomation_service_1.PersonalInfomationService])
+    __metadata("design:paramtypes", [account_service_1.AccountService,
+        personal_infomation_service_1.PersonalInfomationService])
 ], AccountController);
 exports.AccountController = AccountController;
 //# sourceMappingURL=account.controller.js.map

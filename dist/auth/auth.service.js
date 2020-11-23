@@ -26,7 +26,11 @@ let AuthService = class AuthService {
         return null;
     }
     async login(account) {
-        const payload = { account: account.account, name: account.name, id: account._id };
+        const payload = {
+            account: account.account,
+            name: account.name,
+            id: account._id,
+        };
         return {
             accessToken: this.jwtService.sign(payload),
         };
@@ -34,7 +38,8 @@ let AuthService = class AuthService {
 };
 AuthService = __decorate([
     common_1.Injectable(),
-    __metadata("design:paramtypes", [account_service_1.AccountService, jwt_1.JwtService])
+    __metadata("design:paramtypes", [account_service_1.AccountService,
+        jwt_1.JwtService])
 ], AuthService);
 exports.AuthService = AuthService;
 //# sourceMappingURL=auth.service.js.map
