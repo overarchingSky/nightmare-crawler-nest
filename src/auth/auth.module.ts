@@ -8,7 +8,7 @@ import { AccountModule } from '../account/account.module';
 import { JwtStrategy } from './jwt.strategy';
 import { LocalStrategy } from './local.strategy';
 import { PersonalInfomationModule } from 'src/personal-information/personal-infomation.module';
-//import { AccountService } from '../Account/Account.service';
+import { WeixinModule } from './adapter/weixin/weixin.module';
 
 @Module({
   imports: [
@@ -21,8 +21,13 @@ import { PersonalInfomationModule } from 'src/personal-information/personal-info
       //60s登录过期时间
       signOptions: { expiresIn: '6000s' },
     }),
+    // 适配器
+    /**
+     * 微信
+     */
+    WeixinModule,
   ],
-  providers: [AuthService, AccountModule, LocalStrategy, JwtStrategy],
+  providers: [AuthService, /*AccountModule,*/ LocalStrategy, JwtStrategy],
   controllers: [AuthController],
   exports: [AuthService],
 })

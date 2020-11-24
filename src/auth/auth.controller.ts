@@ -26,4 +26,6 @@ export class AuthController {
     return userInfo;
     return req.user;
   }
+
+
 }
