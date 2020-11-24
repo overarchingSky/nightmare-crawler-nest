@@ -4,4 +4,4 @@ export declare class Account extends Document {
     password: string;
     user: string[];
 }
-export declare const AccountSchema: any;
+export declare const AccountSchema: import("mongoose").Schema<any>;

@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PersonalInfomationService = void 0;
 const common_1 = require("@nestjs/common");
@@ -50,7 +49,7 @@ let PersonalInfomationService = class PersonalInfomationService {
 PersonalInfomationService = __decorate([
     common_1.Injectable(),
     __param(0, mongoose_1.InjectModel(personal_infomation_schemas_1.PersonalInfomation.name)),
-    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object])
+    __metadata("design:paramtypes", [mongoose_2.Model])
 ], PersonalInfomationService);
 exports.PersonalInfomationService = PersonalInfomationService;
 //# sourceMappingURL=personal-infomation.service.js.map
