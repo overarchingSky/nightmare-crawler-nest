@@ -1,15 +1,15 @@
 import * as OSS from 'ali-oss';
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class Oss {
+export class OssService {
   private client: any;
   public constructor() {
     this.client = new OSS({
-      region: 'oss-cn-qingdao',
-      accessKeyId: 'LTAI1233kixxxxx',
-      accessKeySecret: 'b166MvJ2p39yF123HTedlhAxxxxxx',
-      bucket: '*****',
+      region: 'oss-cn-chengdu',
+      accessKeyId: 'LTAI4GCdKL9GThrdVyaDo6vw',
+      accessKeySecret: 'xSZJTRM2j1xxoAG4ZTbmln81h90PWB',
+      bucket: 'jinshangyun-love',
     });
   }
   /**
@@ -19,7 +19,7 @@ export class Oss {
    * @param size
    */
   public async uploadFile(
-    localPath: string,
+    localPath: string | Buffer | ReadableStream,
     ossPath: string,
     size: number,
   ): Promise<string> {
@@ -31,7 +31,10 @@ export class Oss {
     }
   }
   // oss put上传文件
-  private async upload(ossPath: string, localPath: string): Promise<string> {
+  private async upload(
+    ossPath: string,
+    localPath: string | Buffer | ReadableStream,
+  ): Promise<string> {
     let res;
     try {
       res = await this.client.put(ossPath, localPath);
@@ -43,7 +46,10 @@ export class Oss {
     return res.url;
   }
   // oss 断点上传
-  private async resumeUpload(ossPath: string, localPath: string) {
+  private async resumeUpload(
+    ossPath: string,
+    localPath: string | Buffer | ReadableStream,
+  ) {
     let checkpoint: any = 0;
     let bRet = '';
     for (let i = 0; i < 3; i++) {

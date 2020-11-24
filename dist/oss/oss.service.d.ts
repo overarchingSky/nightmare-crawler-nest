@@ -1,7 +1,8 @@
-export declare class Oss {
+/// <reference types="node" />
+export declare class OssService {
     private client;
     constructor();
-    uploadFile(localPath: string, ossPath: string, size: number): Promise<string>;
+    uploadFile(localPath: string | Buffer | ReadableStream, ossPath: string, size: number): Promise<string>;
     private upload;
     private resumeUpload;
     deleteOne(filepath: string): Promise<void>;

@@ -14,12 +14,14 @@ const auth_module_1 = require("../auth/auth.module");
 const mongoose_1 = require("@nestjs/mongoose");
 const account_module_1 = require("../account/account.module");
 const personal_infomation_module_1 = require("../personal-information/personal-infomation.module");
+const oss_module_1 = require("../oss/oss.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
         imports: [
             mongoose_1.MongooseModule.forRoot('mongodb://localhost/nest'),
+            oss_module_1.OssModule,
             auth_module_1.AuthModule,
             account_module_1.AccountModule,
             personal_infomation_module_1.PersonalInfomationModule,

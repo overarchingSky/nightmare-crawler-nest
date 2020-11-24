@@ -9,16 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Oss = void 0;
+exports.OssService = void 0;
 const OSS = require("ali-oss");
 const common_1 = require("@nestjs/common");
-let Oss = class Oss {
+let OssService = class OssService {
     constructor() {
         this.client = new OSS({
-            region: 'oss-cn-qingdao',
-            accessKeyId: 'LTAI1233kixxxxx',
-            accessKeySecret: 'b166MvJ2p39yF123HTedlhAxxxxxx',
-            bucket: '*****',
+            region: 'oss-cn-chengdu',
+            accessKeyId: 'LTAI4GCdKL9GThrdVyaDo6vw',
+            accessKeySecret: 'xSZJTRM2j1xxoAG4ZTbmln81h90PWB',
+            bucket: 'jinshangyun-love',
         });
     }
     async uploadFile(localPath, ossPath, size) {
@@ -109,9 +109,9 @@ let Oss = class Oss {
         return false;
     }
 };
-Oss = __decorate([
+OssService = __decorate([
     common_1.Injectable(),
     __metadata("design:paramtypes", [])
-], Oss);
-exports.Oss = Oss;
+], OssService);
+exports.OssService = OssService;
 //# sourceMappingURL=oss.service.js.map
