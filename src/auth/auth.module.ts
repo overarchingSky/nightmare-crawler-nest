@@ -19,7 +19,7 @@ import { WeixinModule } from './adapter/weixin/weixin.module';
     JwtModule.register({
       secret: jwtConstants.secret,
       //60s登录过期时间
-      signOptions: { expiresIn: '6000s' },
+      signOptions: { expiresIn: jwtConstants.expiresIn },
     }),
     // 适配器
     /**

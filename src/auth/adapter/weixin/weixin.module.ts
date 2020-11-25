@@ -11,7 +11,7 @@ import { WeixinStrategy } from './weixin.strategy';
     JwtModule.register({
         secret: jwtConstants.secret,
         //60s登录过期时间
-        signOptions: { expiresIn: '6000s' },
+        signOptions: { expiresIn: jwtConstants.expiresIn },
       }),
       HttpModule,
       AccountModule
