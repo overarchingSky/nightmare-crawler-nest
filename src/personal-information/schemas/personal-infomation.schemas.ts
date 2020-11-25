@@ -1,8 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { IPersonalInfomation } from '../dto/personalInfomation.dto';
 
 @Schema()
-export class PersonalInfomation extends Document {
+export class PersonalInfomation extends Document implements IPersonalInfomation {
   @Prop()
   accountId?: string;
 
@@ -10,7 +11,7 @@ export class PersonalInfomation extends Document {
   name: string;
 
   @Prop({ required: true })
-  age: string;
+  age: number;
 
   @Prop()
   gender: 'MALE' | 'FEMAL';

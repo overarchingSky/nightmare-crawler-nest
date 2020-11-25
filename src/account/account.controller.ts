@@ -1,7 +1,8 @@
 import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { IPersonalInfomation } from 'src/personal-information/dto/personalInfomation.dto';
 import { PersonalInfomationService } from 'src/personal-information/personal-infomation.service';
 import { AccountService } from './account.service';
-import { IAccountDto } from './dto/account.dto';
+import { IAccount } from './dto/account.dto';
 
 //@UseGuards(JwtAuthGuard)
 @Controller('account')
@@ -11,9 +12,9 @@ export class AccountController {
     private readonly personalInfomationService: PersonalInfomationService,
   ) {}
   @Post('create')
-  async create(@Body() accountDto: IAccountDto) {
+  async create(@Body() accountDto: IAccount & IPersonalInfomation) {
     const personalInfomation = await this.personalInfomationService.create(
-      accountDto,
+      accountDto
     );
     console.log('personalInfomation', personalInfomation);
     accountDto.user = [personalInfomation._id];

@@ -21,10 +21,9 @@ export class AuthController {
   @Get('profile')
   async getProfile(@Request() req) {
     console.log('login', req.user.id);
-    const userInfo = await this.personalInfomationService.findOne(req.user.id);
+    const userInfo = await this.personalInfomationService.findOne('accountId',req.user.id);
     console.log('userInfo', userInfo);
     return userInfo;
-    return req.user;
   }
 
 

@@ -1,9 +1,22 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Post, Query, Request, UseGuards } from '@nestjs/common';
+import { AccountService } from 'src/account/account.service';
+import { WeixinAuthGuard } from './weixin-auth.guard';
 import { WeixinService } from './weixin.service';
 
 @Controller('weixin')
 export class WeixinController {
-    constructor(private readonly weixinService: WeixinService){}
+    constructor(private readonly weixinService: WeixinService, private readonly accountService: AccountService){}
+
+    /**
+     * 
+     * @param unionId 
+     * @param autoRegister 
+     */
+    @UseGuards(WeixinAuthGuard)
+    @Post('login')
+    async login(@Request() req/*, @Query('unionId') unionId:string, @Query() autoRegister:boolean = false*/){
+        return this.weixinService.login(req.user)
+    }
 
     @Get('getOpenid')
     getOpenid(@Query('appid') appid:string, @Query('secret') secret: string, @Query('code') code: string){

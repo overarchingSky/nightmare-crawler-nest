@@ -5,7 +5,7 @@ import {
   PersonalInfomation,
   PersonalInfomationSchema,
 } from 'src/personal-information/schemas/personal-infomation.schemas';
-import { IAccountDto } from './dto/account.dto';
+import { IAccount } from './dto/account.dto';
 import { Account } from './schemas/account.schemas';
 
 @Injectable()
@@ -15,13 +15,22 @@ export class AccountService {
     // 密码应该使用bcrypt库去进行加密
   }
 
-  async create(createCatDto: IAccountDto): Promise<Account> {
+  async create(createCatDto: IAccount): Promise<Account> {
     const createdAccount = new this.AccountModel(createCatDto);
     return createdAccount.save();
   }
 
-  async findOne(account: string): Promise<Account | undefined> {
-    return this.AccountModel.findOne({ account });
+  /**
+   * 根据account字段查询用户信息
+   * @param account 
+   */
+  /**
+   * 根据指定字段查询单个用户
+   * @param field 
+   * @param value 
+   */
+  async findOne(field: string,value:string): Promise<Account | undefined> {
+    return this.AccountModel.findOne({ [field]:value });
   }
 
   async find(ids?: string[]): Promise<Account[] | undefined> {

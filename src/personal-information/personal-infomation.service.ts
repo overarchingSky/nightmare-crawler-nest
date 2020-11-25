@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { IPersonalInfomation } from './dto/personalInfomation.dto';
 import { PersonalInfomation } from './schemas/personal-infomation.schemas';
 
 @Injectable()
@@ -10,7 +11,7 @@ export class PersonalInfomationService {
     private PersonalInfomationModel: Model<PersonalInfomation>,
   ) {}
   async create(
-    PersonalInfomationDto: PersonalInfomation,
+    PersonalInfomationDto: IPersonalInfomation,
   ): Promise<PersonalInfomation | undefined> {
     const createdPersonalInfomation = new this.PersonalInfomationModel(
       PersonalInfomationDto,
@@ -38,8 +39,8 @@ export class PersonalInfomationService {
   async findById(id: string): Promise<PersonalInfomation | undefined> {
     return this.PersonalInfomationModel.findById(id);
   }
-  async findOne(accountId: string) {
-    return this.PersonalInfomationModel.findOne({ accountId }).exec();
+  async findOne(field:string,value: string) {
+    return this.PersonalInfomationModel.findOne({ [field]:value }).exec();
   }
   /**
    * 批量查找

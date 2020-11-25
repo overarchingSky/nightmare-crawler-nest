@@ -10,7 +10,7 @@ export class AuthService {
   ) {}
 
   async validateAccount(accountId: string, password: string): Promise<any> {
-    const account = await this.accountService.findOne(accountId);
+    const account = await this.accountService.findOne('account',accountId);
     if (account && account.password === password) {
       return account;
     }
