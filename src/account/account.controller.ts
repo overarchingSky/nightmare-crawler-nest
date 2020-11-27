@@ -18,8 +18,6 @@ export class AccountController {
     );
     accountDto.user = [personalInfomation._id];
     return this.accountService.create(accountDto);
-    // await this.accountService.create(accountDto);
-    // return personalInfomation;
   }
   @Get()
   find(@Query('ids') ids: string[]) {
