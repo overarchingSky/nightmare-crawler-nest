@@ -1,4 +1,4 @@
-import { Injectable, UseInterceptors } from '@nestjs/common';
+import { HttpException, Injectable, UseInterceptors } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { IAccount } from './dto/account.dto';
@@ -15,7 +15,15 @@ export class AccountService {
     // 密码应该使用bcrypt库去进行加密
   }
 
-  async create(createCatDto: IAccount): Promise<Account> {
+  async create(createCatDto: IAccount,project:string): Promise<Account> {
+    if(!project){
+        throw new HttpException('project 不能为空', 200)
+    }
+    // todo
+    // const personalInfomation = await this.personalInfomationService.create(
+    //   accountDto
+    // );
+    // accountDto.user = [{project:project.toUpperCase(), ref:personalInfomation._id}];
     const createdAccount = new this.AccountModel(createCatDto);
     const account = await createdAccount.save();
     return this.findOne('_id',account._id)
@@ -32,7 +40,7 @@ export class AccountService {
    */
   async findOne(field: string,value:string): Promise<Account | undefined> {
     return this.AccountModel.findOne({ [field]:value }).populate({
-        path: 'user',
+        path: 'user.ref',
         model: 'PersonalInfomation',
       });
   }
@@ -45,7 +53,7 @@ export class AccountService {
     }
     return  this.AccountModel.find(condition)
     .populate({
-      path: 'user',
+      path: 'user.ref',
       model: 'PersonalInfomation',
     })
   }

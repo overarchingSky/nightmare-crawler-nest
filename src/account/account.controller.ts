@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Header, Headers, HttpException, Post, Query } from '@nestjs/common';
+import { HttpExceptionFilter } from 'src/interceptor/http-exception.filter';
 import { IPersonalInfomation } from 'src/personal-information/dto/personalInfomation.dto';
 import { PersonalInfomationService } from 'src/personal-information/personal-infomation.service';
 import { AccountService } from './account.service';
@@ -11,13 +12,14 @@ export class AccountController {
     private readonly accountService: AccountService,
     private readonly personalInfomationService: PersonalInfomationService,
   ) {}
+  /**
+   * 创建一个账号及用户
+   * @param accountDto 
+   * @param project 项目号，项目唯一标志
+   */
   @Post('create')
-  async create(@Body() accountDto: IAccount & IPersonalInfomation) {
-    const personalInfomation = await this.personalInfomationService.create(
-      accountDto
-    );
-    accountDto.user = [personalInfomation._id];
-    return this.accountService.create(accountDto);
+  async create(@Body() accountDto: IAccount & IPersonalInfomation, @Headers('project') project:string) {
+    return this.accountService.create(accountDto,project);
   }
   @Get()
   find(@Query('ids') ids: string[]) {
