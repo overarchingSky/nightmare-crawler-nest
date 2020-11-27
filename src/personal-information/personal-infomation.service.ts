@@ -53,4 +53,14 @@ export class PersonalInfomationService {
       return this.PersonalInfomationModel.find();
     }
   }
+
+  /**
+   * 更新指定用户的
+   * @param field 
+   * @param value 
+   * @param personalInfomation 
+   */
+  update(field:string,value:string,personalInfomation:IPersonalInfomation){
+      return this.PersonalInfomationModel.updateOne({[field]:value},personalInfomation)
+  }
 }

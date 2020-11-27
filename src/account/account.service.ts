@@ -1,14 +1,14 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UseInterceptors } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import {
-  PersonalInfomation,
-  PersonalInfomationSchema,
-} from 'src/personal-information/schemas/personal-infomation.schemas';
 import { IAccount } from './dto/account.dto';
+import { User } from './interceptor/user.decorator';
 import { Account } from './schemas/account.schemas';
+import { FirstUser } from './user.strategy';
+
 
 @Injectable()
+@User(FirstUser)
 export class AccountService {
   //private readonly Accounts: AccountSchema[];
   constructor(@InjectModel(Account.name) private AccountModel: Model<Account>) {
@@ -33,14 +33,20 @@ export class AccountService {
     return this.AccountModel.findOne({ [field]:value });
   }
 
+  //@User(FirstUser)
   async find(ids?: string[]): Promise<Account[] | undefined> {
-    if (ids) {
+    if (ids && ids.length > 0) {
       return this.AccountModel.find({ _id: { $in: ids } });
     } else {
-      return this.AccountModel.find().populate({
+        const account = await this.AccountModel.find().populate({
+            path: 'user',
+            model: 'PersonalInfomation',
+          })
+      return this.AccountModel.find()
+      .populate({
         path: 'user',
         model: 'PersonalInfomation',
-      });
+      })
     }
   }
 }

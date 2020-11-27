@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './local-auth.guard';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { PersonalInfomationService } from 'src/personal-information/personal-infomation.service';
+import { IAccount } from 'src/account/dto/account.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -20,8 +21,8 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   async getProfile(@Request() req) {
-    console.log('login', req.user.id);
-    const userInfo = await this.personalInfomationService.findOne('accountId',req.user.id);
+    console.log('login', req.user);
+    const userInfo = await this.personalInfomationService.findOne('id',req.user.id);
     console.log('userInfo', userInfo);
     return userInfo;
   }

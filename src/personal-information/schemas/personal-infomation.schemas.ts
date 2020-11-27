@@ -4,8 +4,6 @@ import { IPersonalInfomation } from '../dto/personalInfomation.dto';
 
 @Schema()
 export class PersonalInfomation extends Document implements IPersonalInfomation {
-  @Prop()
-  accountId?: string;
 
   @Prop({ required: true })
   name: string;

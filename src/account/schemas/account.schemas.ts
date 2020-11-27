@@ -1,8 +1,7 @@
 import { Reflector } from '@nestjs/core';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { IPersonalInfomation } from 'src/personal-information/dto/personalInfomation.dto';
-import { IAccount } from '../dto/account.dto';
+import { IAccount, User } from '../dto/account.dto';
 
 @Schema()
 export class Account extends Document implements IAccount {
@@ -19,7 +18,7 @@ export class Account extends Document implements IAccount {
     unionId?: string;
     
     @Prop({ default: [] })
-    user?: string[];//这里保存的是personalInfomation的id
+    user?: User | (string | User)[]//这里数据库存的是User的id集合，如['dksjeg215132d1a35s1321']，因此default为[]，但在取数据时，希望将其转化成单个User，转化逻辑在user.decorator.ts中声明
 }
 console.log('Account', Account);
 export const AccountSchema = SchemaFactory.createForClass(Account);
