@@ -16,14 +16,13 @@ export class AccountController {
     const personalInfomation = await this.personalInfomationService.create(
       accountDto
     );
-    console.log('personalInfomation', personalInfomation);
     accountDto.user = [personalInfomation._id];
-    await this.accountService.create(accountDto);
-    return personalInfomation;
+    return this.accountService.create(accountDto);
+    // await this.accountService.create(accountDto);
+    // return personalInfomation;
   }
   @Get()
   find(@Query('ids') ids: string[]) {
-      console.log('ids',ids)
     return this.accountService.find(ids);
   }
 }

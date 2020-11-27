@@ -17,7 +17,8 @@ export class AccountService {
 
   async create(createCatDto: IAccount): Promise<Account> {
     const createdAccount = new this.AccountModel(createCatDto);
-    return createdAccount.save();
+    const account = await createdAccount.save();
+    return this.findOne('_id',account._id)
   }
 
   /**
@@ -30,7 +31,10 @@ export class AccountService {
    * @param value 
    */
   async findOne(field: string,value:string): Promise<Account | undefined> {
-    return this.AccountModel.findOne({ [field]:value });
+    return this.AccountModel.findOne({ [field]:value }).populate({
+        path: 'user',
+        model: 'PersonalInfomation',
+      });
   }
 
   //@User(FirstUser)

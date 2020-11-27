@@ -40,7 +40,7 @@ export class PersonalInfomationService {
     return this.PersonalInfomationModel.findById(id);
   }
   async findOne(field:string,value: string) {
-    return this.PersonalInfomationModel.findOne({ [field]:value }).exec();
+    return this.PersonalInfomationModel.findOne({ [field]:value });
   }
   /**
    * 批量查找
