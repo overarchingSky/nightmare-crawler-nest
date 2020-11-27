@@ -8,7 +8,7 @@ import { IAccount, User } from "../dto/account.dto"
 export function warpFun(target:Function,strategy:(users:User[]) => User | undefined | User[]){
     return async function(...params): Promise<IAccount | IAccount[]> {
         params = params.filter(param => param !== undefined && param !== null && String(param).trim() !== '')
-        let accounts: IAccount | IAccount[] = await target.call(this, params)
+        let accounts: IAccount | IAccount[] = await target.call(this, ...params)
         if(Array.isArray(accounts)){
             accounts.forEach(account => {
                 if(account.user && Array.isArray(account.user)){

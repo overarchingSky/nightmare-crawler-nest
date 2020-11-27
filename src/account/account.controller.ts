@@ -23,6 +23,7 @@ export class AccountController {
   }
   @Get()
   find(@Query('ids') ids: string[]) {
+      console.log('ids',ids)
     return this.accountService.find(ids);
   }
 }

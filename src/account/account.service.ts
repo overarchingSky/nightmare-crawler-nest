@@ -35,18 +35,14 @@ export class AccountService {
 
   //@User(FirstUser)
   async find(ids?: string[]): Promise<Account[] | undefined> {
+      let condition
     if (ids && ids.length > 0) {
-      return this.AccountModel.find({ _id: { $in: ids } });
-    } else {
-        const account = await this.AccountModel.find().populate({
-            path: 'user',
-            model: 'PersonalInfomation',
-          })
-      return this.AccountModel.find()
-      .populate({
-        path: 'user',
-        model: 'PersonalInfomation',
-      })
+      condition = { _id: { $in: ids } }
     }
+    return  this.AccountModel.find(condition)
+    .populate({
+      path: 'user',
+      model: 'PersonalInfomation',
+    })
   }
 }
