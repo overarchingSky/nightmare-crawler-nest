@@ -1,11 +1,10 @@
 import { Controller, Get, Post, Query, Request, UseGuards } from '@nestjs/common';
-import { AccountService } from 'src/account/account.service';
 import { WeixinAuthGuard } from './weixin-auth.guard';
 import { WeixinService } from './weixin.service';
 
 @Controller('weixin')
 export class WeixinController {
-    constructor(private readonly weixinService: WeixinService, private readonly accountService: AccountService){}
+    constructor(private readonly weixinService: WeixinService){}
 
     /**
      * 

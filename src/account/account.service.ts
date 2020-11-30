@@ -1,10 +1,6 @@
-import { HttpException, Injectable, UseInterceptors } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { HttpExceptionFilter } from 'src/interceptor/http-exception.filter';
-import { IPersonalInfomation } from 'src/personal-information/dto/personalInfomation.dto';
-import { PersonalInfomationService } from 'src/personal-information/personal-infomation.service';
-import { PersonalInfomation } from 'src/personal-information/schemas/personal-infomation.schemas';
 import { IAccount, IUserMeta } from './dto/account.dto';
 import { User } from './interceptor/user.decorator';
 import { Account } from './schemas/account.schemas';
@@ -14,8 +10,7 @@ import { FirstUser } from './user.strategy';
 @Injectable()
 //@User(FirstUser)
 export class AccountService {
-  //private readonly Accounts: AccountSchema[];
-  constructor(@InjectModel(Account.name) private AccountModel: Model<Account>, private readonly personalInfomationService: PersonalInfomationService) {
+  constructor(@InjectModel(Account.name) private AccountModel: Model<Account>) {
     // 密码应该使用bcrypt库去进行加密
   }
 
