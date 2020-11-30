@@ -1,6 +1,7 @@
 import { HttpException, Injectable, UseInterceptors } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { HttpExceptionFilter } from 'src/interceptor/http-exception.filter';
 import { IPersonalInfomation } from 'src/personal-information/dto/personalInfomation.dto';
 import { PersonalInfomationService } from 'src/personal-information/personal-infomation.service';
 import { PersonalInfomation } from 'src/personal-information/schemas/personal-infomation.schemas';
@@ -20,26 +21,23 @@ export class AccountService {
 
   @User(FirstUser)
   async create(createCatDto: IAccount): Promise<Account> {
-    // todo
-    // const personalInfomation = await this.personalInfomationService.create(
-    //   accountDto
-    // );
-    // accountDto.user = [{project:project.toUpperCase(), ref:personalInfomation._id}];
-    // const createdAccount = new this.AccountModel(createCatDto);
-    // const personalInfomation = await this.personalInfomationService.create(
-    //     createCatDto
-    // );
-    // // createdAccount.updateOne({user:[{
-    // //     project:project.toUpperCase(),
-    // //     ref:personalInfomation._id
-    // // }]})
-    // const account = await createdAccount.save();
-    // return this.bindUser('_id',account.id,project,personalInfomation.id)
-    // //return this.findOne('_id',account._id)
-
+    if(createCatDto.account){
+        // 普通模式下，不允许重复创建账户
+        const account = await this.findOne('account',createCatDto.account)
+        if(account) {
+            throw new HttpException(`该账户已注册`,200)
+        }
+    }
+    if(createCatDto.unionId){
+        // 微信方式，重复创建账户时，跳过创建，并直接返回账户信息
+        const account = await this.findOne('unionId',createCatDto.unionId)
+        if(account){
+            return account
+        }
+    }
+    
     const createdAccount = new this.AccountModel(createCatDto);
     return createdAccount.save()
-    
   }
 
   /**
@@ -64,10 +62,6 @@ export class AccountService {
     
     await account.save()
     return this.findOne(field,value)
-    // return (await account.save()).populate({
-    //     path: 'user.ref',
-    //     model: 'PersonalInfomation',
-    //   });
   }
 
   /**
