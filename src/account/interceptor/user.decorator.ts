@@ -9,14 +9,15 @@ export function warpFun(target:Function,strategy:(users:IUserMeta[]) => User | u
     return async function(...params): Promise<IAccount | IAccount[]> {
         params = params.filter(param => param !== undefined && param !== null && String(param).trim() !== '')
         let accounts: IAccount | IAccount[] = await target.call(this, ...params)
+        const isValidUser = account => accounts && account.user && Array.isArray(account.user) && account.user.length > 0
         if(Array.isArray(accounts)){
             accounts.forEach(account => {
-                if(account.user && Array.isArray(account.user)){
+                if(isValidUser(account)){
                     account.user = strategy(account.user as IUserMeta[])
                 }
             })
         }else{
-            if(accounts.user && Array.isArray(accounts.user)){
+            if(isValidUser(accounts)){
                 accounts.user = strategy(accounts.user as IUserMeta[])
             }            
         }

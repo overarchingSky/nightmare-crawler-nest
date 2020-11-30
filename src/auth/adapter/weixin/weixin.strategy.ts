@@ -24,8 +24,8 @@ export class WeixinStrategy extends PassportStrategy(Strategy as any) {
                 password:'123456',
                 unionId
             }
-            await this.accountService.create(newAccount, project)
-            account = await this.weixinService.validateAccount(unionId);
+            account = await this.accountService.create(newAccount)
+            //account = await this.weixinService.validateAccount(unionId);
         }else{
             throw new UnauthorizedException('未注册')
         }
