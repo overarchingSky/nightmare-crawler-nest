@@ -1,11 +1,11 @@
-{
+module.exports = {
     "moduleFileExtensions": ["js", "json", "ts"],
     "moduleNameMapper": {
         "^src/(.*)": "<rootDir>/src/$1"
     },
-    "rootDir": "../",
+    "testRegex": ".spec.ts$",
     "testEnvironment": "node",
-    "testRegex": ".e2e-spec.ts$",
+    "rootDir": "./",
     "transform": {
         "^.+\\.(t|j)s$": "ts-jest"
     }

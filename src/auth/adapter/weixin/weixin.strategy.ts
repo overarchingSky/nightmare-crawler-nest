@@ -14,22 +14,22 @@ export class WeixinStrategy extends PassportStrategy(Strategy as any) {
       autoRegisterField: 'autoRegister',
     });
   }
-  async validate(unionId:string, autoRegister:boolean): Promise<any> {
+  async validate(unionId:string, autoRegister:boolean,project:string): Promise<any> {
     autoRegister =  Boolean(autoRegister)
-    let user = await this.weixinService.validateAccount(unionId);
-    if (!user) {
+    let account = await this.weixinService.validateAccount(unionId);
+    if (!account) {
         if(autoRegister){
             let newAccount = {
                 account:unionId,
                 password:'123456',
-                unionId,
+                unionId
             }
-            await this.accountService.create(newAccount)
-            user = await this.weixinService.validateAccount(unionId);
+            account = await this.accountService.create(newAccount)
+            //account = await this.weixinService.validateAccount(unionId);
         }else{
             throw new UnauthorizedException('未注册')
         }
     }
-    return user;
+    return account;
   }
 }

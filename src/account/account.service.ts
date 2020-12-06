@@ -1,23 +1,62 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import {
-  PersonalInfomation,
-  PersonalInfomationSchema,
-} from 'src/personal-information/schemas/personal-infomation.schemas';
-import { IAccount } from './dto/account.dto';
+import { IAccount, IUserMeta } from './dto/account.dto';
+import { User } from './interceptor/user.decorator';
 import { Account } from './schemas/account.schemas';
+import { FirstUser } from './user.strategy';
+
 
 @Injectable()
+//@User(FirstUser)
 export class AccountService {
-  //private readonly Accounts: AccountSchema[];
   constructor(@InjectModel(Account.name) private AccountModel: Model<Account>) {
     // 密码应该使用bcrypt库去进行加密
   }
 
+  @User(FirstUser)
   async create(createCatDto: IAccount): Promise<Account> {
+    if(createCatDto.account){
+        // 普通模式下，不允许重复创建账户
+        const account = await this.findOne('account',createCatDto.account)
+        if(account) {
+            throw new HttpException(`该账户已注册`,200)
+        }
+    }
+    if(createCatDto.unionId){
+        // 微信方式，重复创建账户时，跳过创建，并直接返回账户信息
+        const account = await this.findOne('unionId',createCatDto.unionId)
+        if(account){
+            return account
+        }
+    }
+    
     const createdAccount = new this.AccountModel(createCatDto);
-    return createdAccount.save();
+    return createdAccount.save()
+  }
+
+  /**
+   * 绑定user到账户上
+   * @param field 
+   * @param value 
+   * @param project 项目号
+   * @param userId
+   */
+  async bindUser(field:string,value:string,project:string,userId: string){
+    if(!project){
+        throw new HttpException('project 不能为空', 200)
+    }
+    let account = await this.findOneRaw(field, value)
+    account.user = [
+        ...account.user as IUserMeta[],
+        {
+            project:project.toUpperCase(),
+            ref:userId
+        }
+    ]
+    
+    await account.save()
+    return this.findOne(field,value)
   }
 
   /**
@@ -29,18 +68,35 @@ export class AccountService {
    * @param field 
    * @param value 
    */
+  @User(FirstUser)
   async findOne(field: string,value:string): Promise<Account | undefined> {
-    return this.AccountModel.findOne({ [field]:value });
+    return this.findOneRaw(field, value)
   }
 
-  async find(ids?: string[]): Promise<Account[] | undefined> {
-    if (ids) {
-      return this.AccountModel.find({ _id: { $in: ids } });
-    } else {
-      return this.AccountModel.find().populate({
-        path: 'user',
+  /**
+   * 根据指定字段查询单个用户（直出模式，return的值没有经过@User装饰器装换）
+   * @param field 
+   * @param value 
+   */
+  async findOneRaw(field: string,value:string): Promise<Account | undefined> {
+    return this.AccountModel.findOne({ [field]:value }).populate({
+        path: 'user.ref',
         model: 'PersonalInfomation',
       });
+  }
+
+  
+
+  @User(FirstUser)
+  async find(ids?: string[]): Promise<Account[] | undefined> {
+      let condition
+    if (ids && ids.length > 0) {
+      condition = { _id: { $in: ids } }
     }
+    return  this.AccountModel.find(condition)
+    .populate({
+      path: 'user.ref',
+      model: 'PersonalInfomation',
+    })
   }
 }

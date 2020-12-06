@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'aaa shop assistive-tool:Hello World!';
+  welcome(): string {
+    return '欢迎来到蜀都之恋!';
   }
 }
