@@ -5,31 +5,31 @@ import { IPersonalInfomation, IAddress, EnumMaritalStatus, Enumeducation, EnumSo
 @Schema()
 export class PersonalInfomation extends Document implements IPersonalInfomation {
 
-  @Prop({ required: true })
+  @Prop({ required: false})
   name: string;
 
   @Prop()
   gender: 'MALE' | 'FEMAL';
 
-  @Prop({ required: true })
+  @Prop({ required: false})
   phone: number;
 
-  @Prop({ required: true })
+  @Prop({ required: false})
   birthday: number;
 
-  @Prop({ required: true })
+  @Prop({ required: false})
   height: number;
 
-  @Prop({ required: true })
+  @Prop({ required: false})
   weight: number;
 
   /**
    * 是否是会员
    */
-  @Prop({ required: true })
+  @Prop({ required: false})
   member: boolean;
 
-  @Prop({ required: true })
+  @Prop({ required: false})
   idcard: string;
 
   /**
@@ -41,19 +41,19 @@ export class PersonalInfomation extends Document implements IPersonalInfomation 
   /**
    * 职业
    */
-  @Prop({ required: true })
+  @Prop({ required: false})
   occupation: string;
 
   /**
    * 工作区域
    */
-  @Prop({ required: true })
+  @Prop({ required: false})
   workAddress: IAddress;
 
   /**
    * 婚姻状况
    */
-  @Prop({ required: true })
+  @Prop({ required: false})
   maritalStatus: EnumMaritalStatus;
 
   /**
@@ -65,7 +65,7 @@ export class PersonalInfomation extends Document implements IPersonalInfomation 
   /**
    * 学历
    */
-  @Prop({ required: true })
+  @Prop({ required: false})
   education: Enumeducation;
   
   /**
@@ -83,25 +83,25 @@ export class PersonalInfomation extends Document implements IPersonalInfomation 
   /**
    * 是否拥有汽车
    */
-  @Prop({ required: true })
+  @Prop({ required: false})
   hasCar:boolean
 
   /**
    * 年收入
    */
-  @Prop({ required: true })
+  @Prop({ required: false})
   income:number
   
   /**
    * 有无房产
    */
-  @Prop({ required: true })
+  @Prop({ required: false})
   hasHouseProperty:boolean
 
   /**
    * 客户来源、渠道
    */
-  @Prop({ required: true })
+  @Prop({ required: false})
   source:EnumSource
 
   /**
@@ -119,7 +119,7 @@ export class PersonalInfomation extends Document implements IPersonalInfomation 
   /**
    * 本人照片
    */
-  @Prop({ required: true })
+  @Prop({ required: false})
   images:string[]
 }
 

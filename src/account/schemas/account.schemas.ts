@@ -14,7 +14,7 @@ export class Account extends Document implements IAccount {
      * 参见：https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/union-id.html
      */
     @Prop()
-    unionId?: string;
+    openid?: string;
     
     @Prop({ required:true,default: [] })
     user: User | IUserMeta[]//这里数据库存的是User的id集合，如['dksjeg215132d1a35s1321']，因此default为[]，但在取数据时，希望将其转化成单个User，转化逻辑在user.decorator.ts中声明

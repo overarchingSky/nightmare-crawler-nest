@@ -84,27 +84,27 @@ export enum EnumSource{
 
 export interface IPersonalInfomation {
     accountId?:string
-    name:string
-    gender:'MALE' | 'FEMAL'
-    phone:number
-    birthday:number
-    height:number
-    weight:number
-    member:boolean
-    idcard:string
-    permanentAddress:IAddress
-    occupation:string
-    workAddress:IAddress
-    maritalStatus:EnumMaritalStatus
-    familyMember:string
-    education:Enumeducation
-    educationCertificateNumber:string
-    school:string
-    hasCar:boolean
-    income:number
-    hasHouseProperty:boolean
-    source:EnumSource
-    introduction:string
-    expect:string
-    images:string[]
+    name?:string
+    gender?:'MALE' | 'FEMAL'
+    phone?:number
+    birthday?:number
+    height?:number
+    weight?:number
+    member?:boolean
+    idcard?:string
+    permanentAddress?:IAddress
+    occupation?:string
+    workAddress?:IAddress
+    maritalStatus?:EnumMaritalStatus
+    familyMember?:string
+    education?:Enumeducation
+    educationCertificateNumber?:string
+    school?:string
+    hasCar?:boolean
+    income?:number
+    hasHouseProperty?:boolean
+    source?:EnumSource
+    introduction?:string
+    expect?:string
+    images?:string[]
 }

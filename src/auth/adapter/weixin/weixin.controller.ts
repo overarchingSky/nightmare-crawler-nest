@@ -8,12 +8,12 @@ export class WeixinController {
 
     /**
      * 
-     * @param unionId 
+     * @param openid 
      * @param autoRegister 
      */
     @UseGuards(WeixinAuthGuard)
     @Post('login')
-    async login(@Request() req/*, @Query('unionId') unionId:string, @Query() autoRegister:boolean = false*/){
+    async login(@Request() req/*, @Query('openid') openid:string, @Query() autoRegister:boolean = false*/){
         return this.weixinService.login(req.user)
     }
 

@@ -10,7 +10,7 @@ export interface IUserMeta {
 export interface IAccount {
     account:string,
     password:string,
-    unionId?:string,
+    openid?:string,
     // 关联到user.decorator.ts
     user?:User | IUserMeta[]
 }

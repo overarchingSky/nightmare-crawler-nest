@@ -2,6 +2,7 @@ import { HttpModule, Module } from '@nestjs/common';
 import { WeixinService } from './weixin.service';
 import { WeixinController } from './weixin.controller';
 import { AccountModule } from 'src/account/account.module';
+import { PersonalInfomationModule } from 'src/personal-information/personal-infomation.module';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from 'src/auth/constants';
 import { WeixinStrategy } from './weixin.strategy';
@@ -14,7 +15,8 @@ import { WeixinStrategy } from './weixin.strategy';
         signOptions: { expiresIn: jwtConstants.expiresIn },
       }),
       HttpModule,
-      AccountModule
+      AccountModule,
+      PersonalInfomationModule
     ],
   providers: [WeixinService,WeixinStrategy],
   controllers: [WeixinController]

@@ -23,7 +23,7 @@ export class AuthService {
       account: account.account,
       id: account._id,
       user: account.user
-      //unionId:account.unionId
+      //openid:account.openid
     };
     return {
       accessToken: this.jwtService.sign(payload),

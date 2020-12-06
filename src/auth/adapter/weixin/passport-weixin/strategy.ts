@@ -21,8 +21,6 @@ export function Strategy(options, verify) {
   
   this.id = options.idField || 'id';
   this.autoRegister = options.autoRegisterField || 'autoRegister';
-  
-  passport.Strategy.call(this);
   this.name = 'weixin';
   this._verify = verify;
   this._passReqToCallback = options.passReqToCallback;

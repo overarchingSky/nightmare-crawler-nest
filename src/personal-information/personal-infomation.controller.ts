@@ -6,7 +6,10 @@ import {
   Param,
   Post,
   Query,
+  Request,
+  UseGuards,
 } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { PersonalInfomationService } from './personal-infomation.service';
 import { PersonalInfomation } from './schemas/personal-infomation.schemas';
 
@@ -35,6 +38,18 @@ export class PersonalInfomationController {
   create(@Body() personalInfomationDto: PersonalInfomation) {
     return this.personalInfomationService.create(personalInfomationDto);
   }
+
+  /**
+   * 更新用户信息 暂未使用
+   * @param id
+   */
+  @UseGuards(JwtAuthGuard)
+  @Post()
+  update(@Request() req, @Body() personalInfomationDto: PersonalInfomation) {
+      const account = req.user
+      const id = account.user._id
+    return this.personalInfomationService.update('_id', id, personalInfomationDto);
+  }
   /**
    * 删除指定的用户信息
    * @param id
@@ -51,4 +66,5 @@ export class PersonalInfomationController {
   deletes(@Query() ids: string[]) {
     return this.personalInfomationService.delete(ids);
   }
+
 }

@@ -31,7 +31,6 @@ export class AccountController {
   @Post(':accountId/bindUser')
   async bindUser(@Param('accountId') accountId:string, @Body() userDto: User, @Headers('project') project:string){
     const user = await this.personalInfomationService.create(userDto)
-    console.log('++++++',accountId,project,user.id)
     return this.accountService.bindUser('_id',accountId,project,user.id)
   }
 }

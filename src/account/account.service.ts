@@ -16,18 +16,18 @@ export class AccountService {
 
   @User(FirstUser)
   async create(createCatDto: IAccount): Promise<Account> {
-    if(createCatDto.account){
-        // 普通模式下，不允许重复创建账户
-        const account = await this.findOne('account',createCatDto.account)
-        if(account) {
-            throw new HttpException(`该账户已注册`,200)
-        }
-    }
-    if(createCatDto.unionId){
+    if(createCatDto.openid){
         // 微信方式，重复创建账户时，跳过创建，并直接返回账户信息
-        const account = await this.findOne('unionId',createCatDto.unionId)
+        const account = await this.findOne('openid',createCatDto.openid)
         if(account){
             return account
+        }
+    }
+    if(createCatDto.account){
+        const account = await this.findOne('account',createCatDto.account)
+        if(account) {
+            return account
+            //throw new HttpException(`该账户已注册`,200)
         }
     }
     

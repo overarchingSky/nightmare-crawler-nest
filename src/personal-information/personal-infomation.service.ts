@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { log } from 'console';
 import { Model } from 'mongoose';
 import { IPersonalInfomation } from './dto/personalInfomation.dto';
 import { PersonalInfomation } from './schemas/personal-infomation.schemas';

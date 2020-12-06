@@ -4,6 +4,7 @@ import { HttpExceptionFilter } from './interceptor/http-exception.filter';
 import { TransformInterceptor } from './interceptor/transform.interceptor';
 
 async function bootstrap() {
+
   const app = await NestFactory.create(AppModule);
   app.useGlobalInterceptors(new TransformInterceptor());
   app.useGlobalFilters(new HttpExceptionFilter());

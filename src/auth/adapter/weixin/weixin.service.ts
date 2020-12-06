@@ -1,6 +1,7 @@
 import { HttpService, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { AccountService } from 'src/account/account.service';
+import { decrypted } from './aes';
 
 @Injectable()
 export class WeixinService {
@@ -16,18 +17,22 @@ export class WeixinService {
         return res.data
     }
 
-    validateAccount(unionId:string){
-        return this.accountService.findOne('unionId',unionId)
+    validateAccount(openid:string){
+        return this.accountService.findOne('openid',openid)
     }
 
     async login(account: any) {
         const payload = {
           account: account.account,
-          name: account.name,
           id: account._id,
+          user: account.user
         };
         return {
           accessToken: this.jwtService.sign(payload),
         };
       }
+    
+    async getopenid(){
+        //return decrypted(param,key,iv)
+    }
 }

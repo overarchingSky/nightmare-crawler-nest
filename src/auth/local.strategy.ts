@@ -19,7 +19,6 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     if (!account) {
       throw new UnauthorizedException();
     }
-    console.log('account',account)
     return account;
   }
 }
