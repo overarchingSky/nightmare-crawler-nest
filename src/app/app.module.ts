@@ -7,6 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AccountModule } from '../account/account.module';
 import { PersonalInfomationModule } from 'src/personal-information/personal-infomation.module';
 import { OssModule } from 'src/oss/oss.module';
+import { ExportModule } from 'src/export/export.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { OssModule } from 'src/oss/oss.module';
     AuthModule,
     AccountModule,
     PersonalInfomationModule,
+    ExportModule
   ],
   controllers: [AppController],
   providers: [AppService],
