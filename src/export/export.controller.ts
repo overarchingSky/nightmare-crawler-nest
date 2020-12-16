@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Header, Res } from '@nestjs/common';
 import { PersonalInfomationService } from 'src/personal-information/personal-infomation.service';
 import { ExportService } from './export.service';
 // import dayjs from 'dayjs'
@@ -8,6 +8,9 @@ const dayjs = require('dayjs')
 export class ExportController {
     constructor(private readonly exportService:ExportService,private readonly personalInformationService: PersonalInfomationService){}
     @Get('user')
+    @Header('Content-Disposition','attachment;filename=user.xlsx')
+    //encodeURIComponent
+    @Header('Content-Type','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     async exportUser(){
         const start = new Date()
         const end = Date.now()
@@ -21,10 +24,6 @@ export class ExportController {
                 permanentAddress: user.permanentAddress,
                 workAddress:user.workAddress,
                 hasCar: user.hasCar === true ? '有' : '无'
-
-
-
-
             }
         })
         //@ts-ignore
