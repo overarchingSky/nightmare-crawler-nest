@@ -18,6 +18,7 @@ export class ExportService {
         const filePath = path.resolve(tmpDir,fileName)
         const fileExist = fs.existsSync(filePath)
         if(fileExist){
+            console.log('test')
             fs.unlinkSync(filePath)
         }
 
